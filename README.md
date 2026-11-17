@@ -8,7 +8,7 @@ I wanted to learn how AI agents, RAG and tools fit together by building them. I 
 ## 1. RAG chatbot
 Ask questions about your own documents and get answers from them.
 
-![RAG workflow](rag.png)
+<img width="1670" height="756" alt="rag" src="https://github.com/user-attachments/assets/117dbbf3-9ed5-44db-9df4-7f9a4f4257bb" />
 
 1. A new file in a Google Drive folder triggers the workflow.
 2. The file is downloaded and split into chunks.
@@ -19,7 +19,7 @@ Ask questions about your own documents and get answers from them.
 ## 2. Customer support email agent
 Reads incoming emails and replies to customer questions using a company FAQ.
 
-![Customer support workflow](customer_support.png)
+<img width="1671" height="756" alt="customer_support" src="https://github.com/user-attachments/assets/cf0de84e-9160-4cfa-8c6d-060400c2a8bd" />
 
 1. A Gmail trigger checks for new emails every minute.
 2. A text classifier decides: **Customer Support** or **Other**.
@@ -30,7 +30,7 @@ Reads incoming emails and replies to customer questions using a company FAQ.
 ## 3. LinkedIn post writer
 Turns a list of topics in a Google Sheet into LinkedIn posts.
 
-![LinkedIn post workflow](linkedin_post.png)
+<img width="1670" height="766" alt="linkedin_post" src="https://github.com/user-attachments/assets/588c3f53-8c9e-447b-baa3-527151546055" />
 
 1. A Google Sheets node reads the topic rows.
 2. An AI agent (OpenAI) researches the topic with Tavily web search.
