@@ -24,7 +24,7 @@
       "name": "Gmail Trigger",
       "credentials": {
         "gmailOAuth2": {
-          "id": "Y8zPFc83L9ck6nlp",
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "Gmail account"
         }
       }
@@ -69,7 +69,7 @@
       "name": "Google Gemini Chat Model",
       "credentials": {
         "googlePalmApi": {
-          "id": "lyZiJ73a56fPftwK",
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "Google Gemini(PaLM) Api account 2"
         }
       }
@@ -124,7 +124,7 @@
       "name": "Qdrant Vector Store",
       "credentials": {
         "qdrantApi": {
-          "id": "zRwUX67JydjvjWMX",
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "Qdrant account"
         }
       }
@@ -145,10 +145,10 @@
       ],
       "id": "c4042a59-3d37-48b5-9ad3-ac5da818aa05",
       "name": "Reply to a message",
-      "webhookId": "312f50d7-4608-481f-861a-fe5f13c076dd",
+      "webhookId": "YOUR_WEBHOOK_ID",
       "credentials": {
         "gmailOAuth2": {
-          "id": "Y8zPFc83L9ck6nlp",
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "Gmail account"
         }
       }
@@ -173,7 +173,7 @@
       "name": "Anthropic Chat Model",
       "credentials": {
         "anthropicApi": {
-          "id": null,
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "",
           "__aiGatewayManaged": true
         }
@@ -193,7 +193,7 @@
       "name": "Embeddings OpenAI",
       "credentials": {
         "openAiApi": {
-          "id": null,
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "",
           "__aiGatewayManaged": true
         }
@@ -292,12 +292,12 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "f74c16d5-6fa1-4bee-ae60-f64678ecbe2c",
+  "versionId": "YOUR_VERSION_ID",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "8b709bbf4a404918f8ecc55d4eed27c1769ab2b41da7b94ca7c2340f8e500ece"
+    "instanceId": "YOUR_INSTANCE_ID"
   },
   "nodeGroups": [],
-  "id": "5HtnTuiAoDBop6Y3",
+  "id": "YOUR_WORKFLOW_ID",
   "tags": []
 }

@@ -1,0 +1,364 @@
+{
+  "name": "API",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "9ba0f2b2-b34e-4043-a704-3bce3375f599",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c4221d2c-173e-4ba0-9b27-fec8b6ddc7ae",
+              "name": "Research Term",
+              "value": "Anthropic latest developments",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "32d1cda4-bcfd-43d2-a953-8f922c266ca6",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.perplexity.ai/orchestrator/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "YOUR_API_KEY_HERE"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"messages\": [\n    {\n      \"content\": \"<string>\",\n      \"role\": \"developer\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"model\": \"perplexity/kimi-k3\",\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"<string>\",\n        \"parameters\": {},\n        \"strict\": false\n      }\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        448,
+        0
+      ],
+      "id": "8ee32d61-23e6-4198-98ba-5bff0e6f313f",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "formTitle": "LinkedIn Post",
+        "formDescription": "Topic for LinkedIn Post",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Topic"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        -256,
+        272
+      ],
+      "id": "da0a611d-f1fc-4357-b81a-a7dabb60a81b",
+      "name": "On form submission",
+      "webhookId": "YOUR_WEBHOOK_ID"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.Topic }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "# Role\nYou are a LinkedIn content specialist. You write clear, honest LinkedIn posts and prepare an image prompt that fits each post.\n\n# Task\nYou will receive one topic from the user.\n1. Use the Tavily search tool to research the topic. Look for current, reliable information. Search no more than 2 times.\n2. Write a LinkedIn post based on what you found.\n3. Write one image prompt for an AI image generator that fits the post.\n\n# LinkedIn post rules\n- 120 to 180 words.\n- Start with a strong first line that makes people want to read on.\n- Short paragraphs, simple words, a friendly professional tone.\n- Include 1 or 2 concrete facts from your research. Never invent facts or statistics. If the research finds nothing reliable, keep the claims general.\n- End with a question or a call to action, then at most 3 hashtags.\n\n# Image prompt rules\n- One paragraph of 40 to 70 words.\n- Describe the subject, style, colours, composition and mood.\n- No text, words, logos or real people in the image.\n- Square composition.\n\n# Output\nReturn only JSON with two fields: \"post\" and \"image_prompt\". No other text."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -32,
+        272
+      ],
+      "id": "d2d81f0f-ca44-481f-841f-77c6bf5cb43b",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/mcp-registry.tavily",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        480
+      ],
+      "id": "3b62b15c-c406-4085-8f03-8dba52313ee5",
+      "name": "Tavily MCP",
+      "credentials": {
+        "tavilyMcpOAuth2Api": {
+          "id": "YOUR_CREDENTIAL_ID",
+          "name": "Tavily account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-sonnet-5",
+          "cachedResultName": "Claude Sonnet 5"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.6,
+      "position": [
+        -208,
+        464
+      ],
+      "id": "59f8e129-c4d2-49be-a96d-5714f402e605",
+      "name": "Anthropic Chat Model",
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_CREDENTIAL_ID",
+          "name": "",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"post\": \"the LinkedIn post text\",\n  \"image_prompt\": \"the image prompt text\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        128,
+        480
+      ],
+      "id": "973c2197-a0be-42c4-84f3-5e6ba0b020f1",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/interactions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-goog-api-key",
+              "value": "YOUR_API_KEY_HERE"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "model",
+              "value": "gemini-nano-banana-2.1"
+            },
+            {
+              "name": "input",
+              "value": "={{ $json.output.image_prompt }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        336,
+        272
+      ],
+      "id": "7b34641b-dede-4ca9-a600-dca4d9407eb9",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "data[0].b64_json",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.2,
+      "position": [
+        560,
+        272
+      ],
+      "id": "e4810d5b-32cd-48b9-be18-155b9cff2d8e",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "sendTo": "you@example.com",
+        "subject": "New LinkedIn post ready",
+        "emailType": "text",
+        "message": "={{ $('AI Agent').item.json.output.post }}",
+        "options": {
+          "appendAttribution": false,
+          "attachmentsUi": {
+            "attachmentsBinary": [
+              {}
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        784,
+        272
+      ],
+      "id": "6b709153-98b5-4057-bfb9-8c0b4ebb5e67",
+      "name": "Send a message",
+      "webhookId": "YOUR_WEBHOOK_ID",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "YOUR_CREDENTIAL_ID",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tavily MCP": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "YOUR_VERSION_ID",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "YOUR_INSTANCE_ID"
+  },
+  "nodeGroups": [],
+  "id": "YOUR_WORKFLOW_ID",
+  "tags": []
+}

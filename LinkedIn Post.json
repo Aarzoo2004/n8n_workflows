@@ -50,7 +50,7 @@
       "name": "Get row(s) in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "nNZLYRQ9PziOL3U8",
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "Google Sheets account"
         }
       }
@@ -90,7 +90,7 @@
       "name": "Tavily MCP",
       "credentials": {
         "tavilyMcpOAuth2Api": {
-          "id": "EbVTS6CegqCwidTu",
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "Tavily account"
         }
       }
@@ -115,7 +115,7 @@
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
-          "id": null,
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "",
           "__aiGatewayManaged": true
         }
@@ -204,7 +204,7 @@
       "name": "Update row in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "nNZLYRQ9PziOL3U8",
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "Google Sheets account"
         }
       }
@@ -273,12 +273,12 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "60a19d45-318d-410c-9229-5cb693868726",
+  "versionId": "YOUR_VERSION_ID",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "8b709bbf4a404918f8ecc55d4eed27c1769ab2b41da7b94ca7c2340f8e500ece"
+    "instanceId": "YOUR_INSTANCE_ID"
   },
   "nodeGroups": [],
-  "id": "Wck6jB6A5WBnKhed",
+  "id": "YOUR_WORKFLOW_ID",
   "tags": []
 }

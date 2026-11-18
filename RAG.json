@@ -13,10 +13,10 @@
         "triggerOn": "specificFolder",
         "folderToWatch": {
           "__rl": true,
-          "value": "1YnS0VQNgc3vWs27lqVWzXS2F4xjJCOsm",
+          "value": "YOUR_DRIVE_FOLDER_ID",
           "mode": "list",
           "cachedResultName": "FileFetch-test",
-          "cachedResultUrl": "https://drive.google.com/drive/folders/1YnS0VQNgc3vWs27lqVWzXS2F4xjJCOsm"
+          "cachedResultUrl": "https://drive.google.com/drive/folders/YOUR_DRIVE_FOLDER_ID"
         },
         "event": "fileCreated",
         "options": {}
@@ -31,7 +31,7 @@
       "name": "Google Drive Trigger",
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "QZ2CTj9vG6JFDqm0",
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "Google Drive account"
         }
       }
@@ -56,7 +56,7 @@
       "name": "Download file",
       "credentials": {
         "googleDriveOAuth2Api": {
-          "id": "QZ2CTj9vG6JFDqm0",
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "Google Drive account"
         }
       }
@@ -89,7 +89,7 @@
       "name": "Embeddings OpenAI",
       "credentials": {
         "openAiApi": {
-          "id": null,
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "",
           "__aiGatewayManaged": true
         }
@@ -115,7 +115,7 @@
       "name": "Qdrant Vector Store",
       "credentials": {
         "qdrantApi": {
-          "id": "zRwUX67JydjvjWMX",
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "Qdrant account"
         }
       }
@@ -132,7 +132,7 @@
       ],
       "id": "da03875d-1cf0-4ac9-8a3c-784e22086cbc",
       "name": "When chat message received",
-      "webhookId": "33f17b2c-26ed-4df8-94eb-9e84ab8b12d2"
+      "webhookId": "YOUR_WEBHOOK_ID"
     },
     {
       "parameters": {
@@ -161,7 +161,7 @@
       "name": "Google Gemini Chat Model",
       "credentials": {
         "googlePalmApi": {
-          "id": "lyZiJ73a56fPftwK",
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "Google Gemini(PaLM) Api account 2"
         }
       }
@@ -188,7 +188,7 @@
       "name": "Qdrant Vector Store1",
       "credentials": {
         "qdrantApi": {
-          "id": "zRwUX67JydjvjWMX",
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "Qdrant account"
         }
       }
@@ -207,7 +207,7 @@
       "name": "Embeddings OpenAI1",
       "credentials": {
         "openAiApi": {
-          "id": null,
+          "id": "YOUR_CREDENTIAL_ID",
           "name": "",
           "__aiGatewayManaged": true
         }
@@ -315,12 +315,12 @@
     "executionOrder": "v1",
     "binaryMode": "separate"
   },
-  "versionId": "dda70cac-45af-4e58-bb5d-ef6343ee4d98",
+  "versionId": "YOUR_VERSION_ID",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "8b709bbf4a404918f8ecc55d4eed27c1769ab2b41da7b94ca7c2340f8e500ece"
+    "instanceId": "YOUR_INSTANCE_ID"
   },
   "nodeGroups": [],
-  "id": "maKw8INS1bInBG8E",
+  "id": "YOUR_WORKFLOW_ID",
   "tags": []
 }
