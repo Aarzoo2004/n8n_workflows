@@ -40,7 +40,7 @@ Turns a list of topics in a Google Sheet into LinkedIn posts.
 ## 4. Invoice processor
 Reads invoice PDFs, saves their details in a spreadsheet, and tells the billing team.
 
-![Invoice workflow](invoice.png)
+<img width="1670" height="751" alt="invoice" src="https://github.com/user-attachments/assets/58f4dcbb-1142-4776-94ff-84b76ca34750" />
 
 1. A new PDF in a Google Drive folder triggers the workflow.
 2. The file is downloaded, and its text is pulled out with the **Extract from File** node.
@@ -52,7 +52,7 @@ Reads invoice PDFs, saves their details in a spreadsheet, and tells the billing 
 ## 5. API practice: HTTP requests
 Practice calling APIs directly with the **HTTP Request** node, instead of using ready-made nodes.
 
-![API workflow](API.png)
+<img width="1671" height="762" alt="API" src="https://github.com/user-attachments/assets/a7ba2806-6c61-49b6-ab4f-474f38424df3" />
 
 1. **Form trigger:** a form takes a topic.
 2. An AI agent (Anthropic) researches it with Tavily and returns two separate fields, the LinkedIn post and an image prompt, using a **Structured Output Parser**.
